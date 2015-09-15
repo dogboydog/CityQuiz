@@ -1,1 +1,1 @@
-CS 1520 - City Quiz
+CS 1530 - City Quiz
