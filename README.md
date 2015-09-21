@@ -1,1 +1,4 @@
-CS 1520 - City Quiz
+CS 1530 - City Quiz
+
+Trello Board: https://trello.com/b/xeNTbLvN/city-quiz
+
