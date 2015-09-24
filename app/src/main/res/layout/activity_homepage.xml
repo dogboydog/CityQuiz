@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+-<LinearLayout android:background="#000000" android:weightSum="1" android:orientation="vertical" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+
+<TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textColor="#B8860B" android:textSize="45dp" android:layout_weight="0.16" android:id="@+id/textView" android:text="@string/city_quiz" android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+<Button android:background="#B8860B" android:layout_height="wrap_content" android:layout_width="match_parent" android:textSize="40dp" android:layout_weight="0.16" android:id="@+id/button" android:text="@string/take_quiz" android:layout_gravity="center"/>
+
+</LinearLayout>
