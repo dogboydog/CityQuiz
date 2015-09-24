@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:text="Which one is C?"
+        android:id="@+id/textView2"
+        android:layout_x="0dp"
+        android:layout_y="3dp"
+        android:background="#B8860B"
+        android:textSize="40dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:text="A"
+        android:id="@+id/button2"
+        android:layout_x="25dp"
+        android:layout_y="150dp"
+        android:background="#B8860B"
+        android:textSize="50dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:text="B"
+        android:id="@+id/button3"
+        android:layout_x="200dp"
+        android:layout_y="150dp"
+        android:background="#B8860B"
+        android:textSize="50dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:text="C"
+        android:id="@+id/button4"
+        android:layout_x="25dp"
+        android:layout_y="275dp"
+        android:background="#B8860B"
+        android:textSize="50dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:text="D"
+        android:id="@+id/button5"
+        android:layout_x="200dp"
+        android:layout_y="275dp"
+        android:background="#B8860B"
+        android:textSize="50dp" />
+
+</AbsoluteLayout>
