@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+-<resources>
+
+<string name="app_name">CityQuiz</string>
+
+<string name="hello_world">Hello world!</string>
+
+<string name="action_settings">Settings</string>
+
+<string name="city_quiz">City Quiz</string>
+
+<string name="take_quiz">Take Quiz</string>
+
+</resources>
