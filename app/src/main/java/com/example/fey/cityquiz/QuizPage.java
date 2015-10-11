@@ -49,7 +49,7 @@ public class QuizPage extends Activity implements OnClickListener {
         }
         else
         {
-            //Wrong result
+             //Wrong result
         }
 
 
