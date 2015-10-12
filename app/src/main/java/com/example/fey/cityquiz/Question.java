@@ -24,9 +24,7 @@ public class Question {
 
     }
 
-    public String button1() {
-        return this.answer1;
-    }
+    public String button1() { return this.answer1; }
 
     public String button2() {
         return this.answer2;
