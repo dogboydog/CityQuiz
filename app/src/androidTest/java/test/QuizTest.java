@@ -22,11 +22,16 @@ public class QuizTest extends InstrumentationTestCase {
 
     private void testQuiz() {
         quiz1 = new Quiz();
+
+        //assertEquals(null, quiz1.ReturnQuestion());
+        assertNull(quiz1.ReturnQuestion());
+
+
         assertTrue(quiz1.isEmpty());
         assertTrue(quiz1.isEmpty());
         quiz1.AddQuestion(question1);
         assertFalse(quiz1.isEmpty());
-        
+
 
         quiz1.AddQuestion(question1);
         quiz1.CurrentQuestionIndex++;
