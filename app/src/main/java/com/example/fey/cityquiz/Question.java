@@ -59,7 +59,7 @@ public class Question {
     }
 
     // generate getters and setters
-
+/*
     public static void main()
     {
         String test_q = "University of Pittsburgh is ";
@@ -71,5 +71,6 @@ public class Question {
         Question test_question = new Question(test_q,test_a1,test_a2,test_a3,test_a4,text_c);
         System.out.println("TESTING....");
     }
+*/
 
 }

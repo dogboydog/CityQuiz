@@ -17,6 +17,7 @@ public class ResultPage extends Activity implements View.OnClickListener{
 
         Button button6 = (Button) findViewById(R.id.button6);
         button6.setOnClickListener(this);
+
     }
 
 

@@ -39,8 +39,8 @@ public class QuizPage extends Activity implements OnClickListener {
         setContentView(R.layout.activity_quizpage);
 
 
-        CurrentQuiz.AddQuiz(test_question);
-        Question TempQuestion = CurrentQuiz.ReturnQuiz();
+        CurrentQuiz.AddQuestion(test_question);
+        Question TempQuestion = CurrentQuiz.ReturnQuestion();
         generate_question(TempQuestion);
     }
 
@@ -64,7 +64,7 @@ public class QuizPage extends Activity implements OnClickListener {
         //still questions left
         else
         {
-            Question TempQuestion = CurrentQuiz.ReturnQuiz();
+            Question TempQuestion = CurrentQuiz.ReturnQuestion();
             generate_question(TempQuestion);
 
 

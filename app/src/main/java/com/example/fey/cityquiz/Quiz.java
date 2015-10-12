@@ -30,7 +30,7 @@ public class Quiz {
         WrongAnswered = 0;
     }
 
-    public void AddQuiz(Question q)
+    public void AddQuestion(Question q)
     {
         QuestionList.add(q);
 
@@ -53,7 +53,7 @@ public class Quiz {
     }
 
     //send question to users.
-    public Question ReturnQuiz()
+    public Question ReturnQuestion()
     {
 
 
