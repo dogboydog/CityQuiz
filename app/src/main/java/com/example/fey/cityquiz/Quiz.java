@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public class Quiz {
 
     ArrayList<Question> QuestionList = new ArrayList<Question>();   //Question List
-    int CorrectAnswered;        //How many questions are answered correctly for now.
-    int WrongAnswered;
-    int CurrentQuestionIndex;
+    public int CorrectAnswered;        //How many questions are answered correctly for now.
+    public int WrongAnswered;
+    public int CurrentQuestionIndex;
 
     //constructor
     public Quiz()
@@ -43,7 +43,7 @@ public class Quiz {
     {
        if(CurrentQuestionIndex < QuestionList.size())
        {
-           CurrentQuestionIndex++;
+          // CurrentQuestionIndex++;
            return false;
        }
        else

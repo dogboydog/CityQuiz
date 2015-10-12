@@ -10,13 +10,35 @@ import com.example.fey.cityquiz.Question;
 public class QuizTest extends InstrumentationTestCase {
 
     Question question1;
-
+    Quiz quiz1;
 
     @Override
     protected void setUp() throws Exception{
         super.setUp();
         Quiz testQuiz = new Quiz();
         testQuestion();
+        testQuiz();
+    }
+
+    private void testQuiz() {
+        quiz1 = new Quiz();
+        assertTrue(quiz1.isEmpty());
+        assertTrue(quiz1.isEmpty());
+        quiz1.AddQuestion(question1);
+        assertFalse(quiz1.isEmpty());
+        
+
+        quiz1.AddQuestion(question1);
+        quiz1.CurrentQuestionIndex++;
+        assertEquals(question1, quiz1.ReturnQuestion());
+
+        assertEquals(0, quiz1.CorrectAnswered);
+        quiz1.CheckAnswer(question1.correctAnswer);
+        assertEquals(1, quiz1.CorrectAnswered);
+        assertEquals(0, quiz1.WrongAnswered);
+        quiz1.CheckAnswer("wrong answer");
+        assertEquals(1, quiz1.WrongAnswered);
+
     }
 
     public void testQuestion() {

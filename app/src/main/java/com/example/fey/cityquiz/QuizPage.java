@@ -64,6 +64,7 @@ public class QuizPage extends Activity implements OnClickListener {
         //still questions left
         else
         {
+            CurrentQuiz.CurrentQuestionIndex++;
             Question TempQuestion = CurrentQuiz.ReturnQuestion();
             generate_question(TempQuestion);
 
