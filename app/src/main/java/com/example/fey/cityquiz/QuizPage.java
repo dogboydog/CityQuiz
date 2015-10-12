@@ -17,68 +17,101 @@ import android.app.Activity;
  */
 public class QuizPage extends Activity implements OnClickListener {
 
-    String test_q = "University of Pittsburgh is ";
-    String test_a1 = "Food";
-    String test_a2 = "Animal";
-    String test_a3 = "Vehicle";
-    String test_a4 = "University";
-    String text_c = "University";
+    String test_q = "Dota is ";
+    String test_a1 = "Coke";
+    String test_a2 = "Pepsi";
+    String test_a3 = "Monster";
+    String test_a4 = "MOBA game";
+    String text_c = "MOBA game";
     Question test_question = new Question(test_q,test_a1,test_a2,test_a3,test_a4,text_c);
+
+
+    Quiz CurrentQuiz = new Quiz();
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizpage);
 
-        generate_question();
+
+        CurrentQuiz.AddQuiz(test_question);
+        Question TempQuestion = CurrentQuiz.ReturnQuiz();
+        generate_question(TempQuestion);
     }
 
     @Override
     public void onClick(View v){
 
+
+
+        //which button user clicked
         Button the_clicked_button = (Button) findViewById(v.getId());
         String answered = the_clicked_button.getText().toString();
-        if (test_question.isAnswer(answered))
+
+        CurrentQuiz.CheckAnswer(answered);
+
+        //no more questions, go to result page
+        if(CurrentQuiz.isEmpty())
         {
             Intent intent = new Intent(QuizPage.this,ResultPage.class);
             startActivity(intent);
         }
+        //still questions left
         else
         {
-             //Wrong result
+            Question TempQuestion = CurrentQuiz.ReturnQuiz();
+            generate_question(TempQuestion);
+
+
         }
+
+
+        /*
+        //there are more questions..
+        if (test_question.isAnswer(answered))
+        {
+
+        }
+        //no more questions, go to result page
+        else
+        {
+            Intent intent = new Intent(QuizPage.this,ResultPage.class);
+            startActivity(intent);
+        }
+        */
 
 
     }
 
 
-    public void generate_question()
+    public void generate_question(Question question)
     {
 
 
         Button button2 = (Button)findViewById(R.id.button2);
-        button2.setText(test_question.button1().toString());
+        button2.setText(question.button1().toString());
         button2.setOnClickListener(this);
 
         //
         Button button3 = (Button) findViewById(R.id.button3);
-        button3.setText(test_question.button2().toString());
+        button3.setText(question.button2().toString());
         button3.setOnClickListener(this);
 
         Button button4 = (Button) findViewById(R.id.button4);
-        button4.setText(test_question.button3().toString());
+        button4.setText(question.button3().toString());
         button4.setOnClickListener(this);
 
         Button button5= (Button) findViewById(R.id.button5);
-        button5.setText(test_question.button4().toString());
+        button5.setText(question.button4().toString());
         button5.setOnClickListener(this);
 
-        TextView question = (TextView) findViewById(R.id.textView2);
-        question.setText(test_question.return_question().toString());
+        TextView current_question = (TextView) findViewById(R.id.textView2);
+        current_question.setText(question.return_question().toString());
     }
 
 }
