@@ -23,9 +23,6 @@ public class QuizTest extends InstrumentationTestCase {
     private void testQuiz() {
         quiz1 = new Quiz();
 
-        //assertEquals(null, quiz1.ReturnQuestion());
-        assertNull(quiz1.ReturnQuestion());
-
 
         assertTrue(quiz1.isEmpty());
         assertTrue(quiz1.isEmpty());
@@ -67,8 +64,6 @@ public class QuizTest extends InstrumentationTestCase {
         assertTrue(question1.isAnswer("answer1"));
         assertFalse(question1.isAnswer("answer2"));
     }
-
-
 
 
     @Override
