@@ -12,7 +12,7 @@
         android:layout_x="0dp"
         android:layout_y="3dp"
         android:background="#B8860B"
-        android:textSize="40dp" />
+        android:textSize="30dp" />
 
     <Button
         android:layout_width="150dp"
@@ -22,7 +22,7 @@
         android:layout_x="25dp"
         android:layout_y="150dp"
         android:background="#B8860B"
-        android:textSize="50dp" />
+        android:textSize="20dp" />
 
     <Button
         android:layout_width="150dp"
@@ -32,7 +32,7 @@
         android:layout_x="200dp"
         android:layout_y="150dp"
         android:background="#B8860B"
-        android:textSize="50dp" />
+        android:textSize="20dp" />
 
     <Button
         android:layout_width="150dp"
@@ -42,7 +42,7 @@
         android:layout_x="25dp"
         android:layout_y="275dp"
         android:background="#B8860B"
-        android:textSize="50dp" />
+        android:textSize="20dp" />
 
     <Button
         android:layout_width="150dp"
@@ -52,6 +52,6 @@
         android:layout_x="200dp"
         android:layout_y="275dp"
         android:background="#B8860B"
-        android:textSize="50dp" />
+        android:textSize="20dp" />
 
 </AbsoluteLayout>

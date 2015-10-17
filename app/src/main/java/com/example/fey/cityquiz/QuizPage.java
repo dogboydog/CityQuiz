@@ -18,7 +18,7 @@ import android.app.Activity;
 public class QuizPage extends Activity implements OnClickListener {
 
     String test_q = "Dota is ";
-    String test_a1 = "Coke";
+    String test_a1 = "This is an answer that is very long and should be resized to a smaller font size";
     String test_a2 = "Pepsi";
     String test_a3 = "Monster";
     String test_a4 = "MOBA game";
@@ -76,21 +76,6 @@ public class QuizPage extends Activity implements OnClickListener {
         }
 
 
-        /*
-        //there are more questions..
-        if (test_question.isAnswer(answered))
-        {
-
-        }
-        //no more questions, go to result page
-        else
-        {
-            Intent intent = new Intent(QuizPage.this,ResultPage.class);
-            startActivity(intent);
-        }
-        */
-
-
     }
 
 
@@ -100,19 +85,43 @@ public class QuizPage extends Activity implements OnClickListener {
 
         Button button2 = (Button)findViewById(R.id.button2);
         button2.setText(question.button1().toString());
+        //adjust button text size based on length of question
+        if(button2.getLineCount() > 4 && button2.getLineCount() <= 6){
+            button2.setTextSize(15);
+        }
+        else if(button2.getLineCount() > 6){
+            button2.setTextSize(10);
+        }
         button2.setOnClickListener(this);
 
-        //
         Button button3 = (Button) findViewById(R.id.button3);
         button3.setText(question.button2().toString());
+        if(button3.getLineCount() > 4 && button3.getLineCount() <= 6){
+            button3.setTextSize(15);
+        }
+        else if(button3.getLineCount() > 6){
+            button3.setTextSize(10);
+        }
         button3.setOnClickListener(this);
 
         Button button4 = (Button) findViewById(R.id.button4);
         button4.setText(question.button3().toString());
+        if(button4.getLineCount() > 4 && button4.getLineCount() <= 6){
+            button4.setTextSize(15);
+        }
+        else if(button4.getLineCount() > 6){
+            button4.setTextSize(10);
+        }
         button4.setOnClickListener(this);
 
         Button button5= (Button) findViewById(R.id.button5);
         button5.setText(question.button4().toString());
+        if(button5.getLineCount() > 4 && button5.getLineCount() <= 6){
+            button5.setTextSize(15);
+        }
+        else if(button5.getLineCount() > 6){
+            button5.setTextSize(10);
+        }
         button5.setOnClickListener(this);
 
         TextView current_question = (TextView) findViewById(R.id.textView2);
