@@ -1,6 +1,7 @@
 package com.example.fey.cityquiz;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
@@ -8,8 +9,7 @@ import android.view.View;
 import android.content.Intent;
 import android.app.Activity;
 
-
-
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -28,7 +28,7 @@ public class QuizPage extends Activity implements OnClickListener {
 
     Quiz CurrentQuiz = new Quiz();
 
-
+    TextView timerTextView;
 
 
 
@@ -38,10 +38,17 @@ public class QuizPage extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizpage);
 
+        timerTextView = (TextView) findViewById(R.id.timeTextView);
+        timerTextView.setText("Time Remaining:\n60");
 
+        //60 second timer
+        final CounterClass timer = new CounterClass(60000, 1000);
+        timer.start();
         CurrentQuiz.AddQuestion(test_question);
         Question TempQuestion = CurrentQuiz.ReturnQuestion();
         generate_question(TempQuestion);
+
+        System.out.println(CurrentQuiz.getNumberRemainingQuestions());
     }
 
     @Override
@@ -71,8 +78,6 @@ public class QuizPage extends Activity implements OnClickListener {
             CurrentQuiz.CurrentQuestionIndex++;
             Question TempQuestion = CurrentQuiz.ReturnQuestion();
             generate_question(TempQuestion);
-
-
         }
 
 
@@ -81,8 +86,6 @@ public class QuizPage extends Activity implements OnClickListener {
 
     public void generate_question(Question question)
     {
-
-
         Button button2 = (Button)findViewById(R.id.button2);
         button2.setText(question.button1().toString());
         //adjust button text size based on length of question
@@ -126,6 +129,36 @@ public class QuizPage extends Activity implements OnClickListener {
 
         TextView current_question = (TextView) findViewById(R.id.textView2);
         current_question.setText(question.return_question().toString());
+    }
+
+    //This class is for the 60 second timer in the QuizPage.
+    public class CounterClass extends CountDownTimer {
+
+        public CounterClass(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        // Updates timer every second
+        public void onTick(long millisUntilFinished) {
+            long millis = millisUntilFinished;
+            String hms = String.format("Time Remaining:\n%02d", TimeUnit.MILLISECONDS.toSeconds(millis));
+            timerTextView.setText(hms);
+        }
+
+        @Override
+        //This runs when the timer hits 0- goes to the results page while marking any unanswered questions false
+        public void onFinish() {
+            timerTextView.setText("Out of Time");
+            Intent intent = new Intent(QuizPage.this,ResultPage.class);
+            String numCorrect = Integer.toString(CurrentQuiz.getCorrectAnswered());
+            int numWrong = CurrentQuiz.getWrongAnswered();
+            numWrong += CurrentQuiz.getNumberRemainingQuestions();
+            String numWrongString = Integer.toString(numWrong);
+            intent.putExtra("correct", numCorrect);
+            intent.putExtra("wrong", numWrongString);
+            startActivity(intent);
+        }
     }
 
 }

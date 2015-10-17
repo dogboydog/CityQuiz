@@ -54,4 +54,17 @@
         android:background="#B8860B"
         android:textSize="20dp" />
 
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="210dp"
+        android:layout_height="60dp"
+
+        android:layout_marginBottom="17dp"
+        android:background="#B8860B"
+
+        android:layout_x="80dp"
+        android:layout_y="400dp"
+        android:textSize="23dp"
+        android:textAlignment="gravity" />
+
 </AbsoluteLayout>

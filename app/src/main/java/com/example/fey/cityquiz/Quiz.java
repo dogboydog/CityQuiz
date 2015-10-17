@@ -36,8 +36,6 @@ public class Quiz implements Serializable{
     public void AddQuestion(Question q)
     {
         QuestionList.add(q);
-
-        System.out.println("11111");
     }
 
     public int getCorrectAnswered(){
@@ -46,6 +44,11 @@ public class Quiz implements Serializable{
 
     public int getWrongAnswered(){
         return WrongAnswered;
+    }
+
+    public int getNumberRemainingQuestions(){
+        return (QuestionList.size() - CurrentQuestionIndex)+1;
+
     }
 
     //return true if no questions left
