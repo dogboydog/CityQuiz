@@ -1,11 +1,14 @@
 package com.example.fey.cityquiz;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Fey on 2015/10/11.
  */
-public class Quiz {
+public class Quiz implements Serializable{
+
+    private static final long serialVersaionUID = 1L;
 
     ArrayList<Question> QuestionList = new ArrayList<Question>();   //Question List
     public int CorrectAnswered;        //How many questions are answered correctly for now.
@@ -37,6 +40,13 @@ public class Quiz {
         System.out.println("11111");
     }
 
+    public int getCorrectAnswered(){
+        return CorrectAnswered;
+    }
+
+    public int getWrongAnswered(){
+        return WrongAnswered;
+    }
 
     //return true if no questions left
     public boolean isEmpty()

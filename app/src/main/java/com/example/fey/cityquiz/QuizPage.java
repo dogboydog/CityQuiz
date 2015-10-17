@@ -59,6 +59,10 @@ public class QuizPage extends Activity implements OnClickListener {
         if(CurrentQuiz.isEmpty())
         {
             Intent intent = new Intent(QuizPage.this,ResultPage.class);
+            String numCorrect = Integer.toString(CurrentQuiz.getCorrectAnswered());
+            String numWrong = Integer.toString(CurrentQuiz.getWrongAnswered());
+            intent.putExtra("correct", numCorrect);
+            intent.putExtra("wrong", numWrong);
             startActivity(intent);
         }
         //still questions left
