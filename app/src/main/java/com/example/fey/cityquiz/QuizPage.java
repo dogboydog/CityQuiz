@@ -48,7 +48,6 @@ public class QuizPage extends Activity implements OnClickListener {
         Question TempQuestion = CurrentQuiz.ReturnQuestion();
         generate_question(TempQuestion);
 
-        System.out.println(CurrentQuiz.getNumberRemainingQuestions());
     }
 
     @Override
