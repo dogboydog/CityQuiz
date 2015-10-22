@@ -16,8 +16,8 @@ public class ResultPage extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultpage);
 
+        //get num right/wrong from the quizpage
         Intent intent = getIntent();
-        //Quiz quiz = (Quiz) intent.getSerializableExtra("quiz");
         String numCorrect = (String) intent.getSerializableExtra("correct");
         String numWrong = (String) intent.getSerializableExtra("wrong");
 
@@ -27,6 +27,7 @@ public class ResultPage extends Activity implements View.OnClickListener{
         TextView resultsView = (TextView) findViewById(R.id.textView3);
         resultsView.setText("You got "+ numCorrect + " correct, and " + numWrong + " wrong.");
 
+        //go home button
         Button button6 = (Button) findViewById(R.id.button6);
         button6.setOnClickListener(this);
 
