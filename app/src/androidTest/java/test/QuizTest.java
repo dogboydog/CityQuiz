@@ -20,7 +20,7 @@ public class QuizTest extends InstrumentationTestCase {
         testQuiz();
     }
 
-    private void testQuiz() {
+    public void testQuiz() {
         quiz1 = new Quiz();
 
         //test that the isEmpty() method works correctly and consistently
