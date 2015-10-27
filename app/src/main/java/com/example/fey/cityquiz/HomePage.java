@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class HomePage extends Activity implements OnClickListener {
+public class HomePage extends Activity /*implements OnClickListener*/ {
 
     //take quiz button
     Button button;
@@ -28,7 +28,55 @@ public class HomePage extends Activity implements OnClickListener {
         setContentView(R.layout.activity_homepage);
         
         button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(this);
+        //button.setOnClickListener(this);
+       //This is all the onclick information for the 'Take Quiz' button
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                //Open sharedPreferences, which saves information between app loads
+                SharedPreferences prefs = getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                //get date of the last time the player took a quiz
+                String dateOfLastQuizTaken = prefs.getString("dateKey", "0");
+
+                //get todays date
+                Calendar c = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("d/M/yy");
+                String todaysDate = sdf.format(c.getTime());
+
+                //Update the sharedPreferences to store todays date
+                editor.putString("dateKey", todaysDate);
+                editor.commit();
+
+                //Check to see if the user has already taken the quiz today
+                if(dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
+                    button.setText("You've already taken the quiz today. Come back tommorow!");
+                    button.setTextSize(20);
+                }
+                else{   //else, take the quiz
+                    Intent intent = new Intent(HomePage.this,QuizPage.class);
+                    startActivity(intent);
+                }
+
+            }
+        });
+
+        //when clicked, will take the user to the submit page
+        Button button1 = (Button)findViewById(R.id.button8);
+        button1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(HomePage.this, SubmitPage.class);
+                startActivity(myIntent);
+            }
+        });
+
+        //when clicked, will take the user to the about page
+        Button button2 = (Button)findViewById(R.id.button7);
+        button2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent myIntent = new Intent(HomePage.this, AboutPage.class);
+                startActivity(myIntent);
+            }
+        });
 
     }
 
@@ -40,7 +88,7 @@ public class HomePage extends Activity implements OnClickListener {
         return super.onCreateOptionsMenu(menu);
     }
 
-
+/**
     @Override
     public void onClick(View v){
         //Open sharedPreferences, which saves information between app loads
@@ -69,5 +117,5 @@ public class HomePage extends Activity implements OnClickListener {
         }
 
     }
-
+*/
 }
