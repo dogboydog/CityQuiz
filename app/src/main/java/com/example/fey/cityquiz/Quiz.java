@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Quiz implements Serializable{
 
+    //need this to pass Strings to the next intent
     private static final long serialVersaionUID = 1L;
 
     ArrayList<Question> QuestionList = new ArrayList<Question>();   //Question List
@@ -38,14 +39,17 @@ public class Quiz implements Serializable{
         QuestionList.add(q);
     }
 
+    //returns number of correct answers
     public int getCorrectAnswered(){
         return CorrectAnswered;
     }
 
+    //returns number of wrong answers
     public int getWrongAnswered(){
         return WrongAnswered;
     }
 
+    //returns the number of questions in the quiz that have not been answered yet
     public int getNumberRemainingQuestions(){
         return (QuestionList.size() - CurrentQuestionIndex)+1;
 
@@ -56,7 +60,6 @@ public class Quiz implements Serializable{
     {
        if(CurrentQuestionIndex < QuestionList.size())
        {
-          // CurrentQuestionIndex++;
            return false;
        }
        else
@@ -87,7 +90,5 @@ public class Quiz implements Serializable{
        }
 
     }
-
-
 
 }

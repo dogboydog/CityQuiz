@@ -19,6 +19,7 @@ import java.util.Calendar;
 
 public class HomePage extends Activity implements OnClickListener {
 
+    //take quiz button
     Button button;
 
     @Override
@@ -28,9 +29,6 @@ public class HomePage extends Activity implements OnClickListener {
         
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
-
-
-
 
     }
 
@@ -51,7 +49,6 @@ public class HomePage extends Activity implements OnClickListener {
         //get date of the last time the player took a quiz
         String dateOfLastQuizTaken = prefs.getString("dateKey", "0");
 
-
         //get todays date
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("d/M/yy");
@@ -66,17 +63,11 @@ public class HomePage extends Activity implements OnClickListener {
             button.setText("You've already taken the quiz today. Come back tommorow!");
             button.setTextSize(20);
         }
-        else{
+        else{   //else, take the quiz
             Intent intent = new Intent(HomePage.this,QuizPage.class);
             startActivity(intent);
         }
 
-
-
-
     }
-
-
-
 
 }

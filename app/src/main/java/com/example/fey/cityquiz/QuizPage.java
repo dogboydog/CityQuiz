@@ -25,11 +25,8 @@ public class QuizPage extends Activity implements OnClickListener {
     String text_c = "MOBA game";
     Question test_question = new Question(test_q,test_a1,test_a2,test_a3,test_a4,text_c);
 
-
     Quiz CurrentQuiz = new Quiz();
-
     TextView timerTextView;
-
 
 
     @Override
@@ -47,13 +44,10 @@ public class QuizPage extends Activity implements OnClickListener {
         CurrentQuiz.AddQuestion(test_question);
         Question TempQuestion = CurrentQuiz.ReturnQuestion();
         generate_question(TempQuestion);
-
     }
 
     @Override
     public void onClick(View v){
-
-
 
         //which button user clicked
         Button the_clicked_button = (Button) findViewById(v.getId());
@@ -82,7 +76,7 @@ public class QuizPage extends Activity implements OnClickListener {
 
     }
 
-
+    //generates question in text box, and answers in the buttons.
     public void generate_question(Question question)
     {
         Button button2 = (Button)findViewById(R.id.button2);
