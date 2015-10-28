@@ -12,21 +12,39 @@ import android.app.Activity;
 import android.view.MenuInflater;
 import android.view.Menu;
 import android.content.SharedPreferences;
+import com.parse.Parse;
+import com.parse.ParseObject;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+
 
 
 public class HomePage extends Activity implements OnClickListener {
 
     //take quiz button
     Button button;
+    public static boolean parseIsInitialized = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        
+
+        // Enable Local Datastore.
+        if(!parseIsInitialized) {
+            Parse.enableLocalDatastore(this);
+            Parse.initialize(this, "2DRZJCltwfbJKH7cAcbkVNU2i2UFGq2uuDEIaxIK", "CEzdLzmlsCUSOhIM5r5spTz7ZTRjbVScAqS0dzU2");
+            parseIsInitialized = true;
+        }
+
+      //  ParseObject testObject = new ParseObject("TestObject");
+      //  testObject.put("foo", "bar");
+      //  testObject.saveInBackground();
+
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
 
@@ -59,7 +77,7 @@ public class HomePage extends Activity implements OnClickListener {
         editor.commit();
 
         //Check to see if the user has already taken the quiz today
-        if(dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
+        if(false){      //dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
             button.setText("You've already taken the quiz today. Come back tommorow!");
             button.setTextSize(20);
         }

@@ -1,16 +1,14 @@
 package com.example.fey.cityquiz;
 import java.lang.*;
-/**
- * Created by Fey on 2015/10/11.
- */
-public class Question {
+
+
+public class Question{
 
     public String question;
     public String answer1;
     public String answer2;
     public String answer3;
     public String answer4;
-
     public String correctAnswer;
 
     //constructor
