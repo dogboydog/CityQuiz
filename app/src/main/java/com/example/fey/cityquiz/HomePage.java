@@ -23,7 +23,7 @@ import java.util.Calendar;
 
 
 
-public class HomePage extends Activity implements OnClickListener {
+public class HomePage extends Activity /*implements OnClickListener*/ {
 
     //take quiz button
     Button button;
