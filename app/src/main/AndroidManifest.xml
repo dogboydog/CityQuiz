@@ -31,10 +31,24 @@
             android:name="com.example.fey.cityquiz.ResultPage"
             android:label = "ResultPage" >
 
+         </activity>
+
+        <activity
+            android:name="com.example.fey.cityquiz.AboutPage"
+            android:label = "AboutPage" >
+
+        </activity>
+
+        <activity
+            android:name="com.example.fey.cityquiz.SubmitPage"
+            android:label = "SubmitPage" >
+
         </activity>
 
 
 
     </application>
+
+</manifest>
 
 </manifest>
