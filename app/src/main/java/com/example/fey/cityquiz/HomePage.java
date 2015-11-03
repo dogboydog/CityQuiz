@@ -3,7 +3,6 @@ package com.example.fey.cityquiz;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.view.View;
@@ -13,14 +12,8 @@ import android.view.MenuInflater;
 import android.view.Menu;
 import android.content.SharedPreferences;
 import com.parse.Parse;
-import com.parse.ParseObject;
-
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
-
-
 
 
 public class HomePage extends Activity /*implements OnClickListener*/ {
@@ -42,12 +35,9 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
             parseIsInitialized = true;
         }
 
-      //  ParseObject testObject = new ParseObject("TestObject");
-      //  testObject.put("foo", "bar");
-      //  testObject.saveInBackground();
 
         button = (Button) findViewById(R.id.button);
-        //button.setOnClickListener(this);
+
        //This is all the onclick information for the 'Take Quiz' button
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -67,7 +57,7 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
                 editor.commit();
 
                 //Check to see if the user has already taken the quiz today
-                if(dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
+                if(false){//dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
                     button.setText("You've already taken the quiz today. Come back tommorow!");
                     button.setTextSize(20);
                 }
@@ -83,6 +73,7 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
         Button button1 = (Button)findViewById(R.id.button8);
         button1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                //go to submit page
                 Intent myIntent = new Intent(HomePage.this, SubmitPage.class);
                 startActivity(myIntent);
             }
@@ -92,6 +83,7 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
         Button button2 = (Button)findViewById(R.id.button7);
         button2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                //go to about page
                 Intent myIntent = new Intent(HomePage.this, AboutPage.class);
                 startActivity(myIntent);
             }
@@ -99,7 +91,9 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
 
     }
 
+
     @Override
+    //creates menu bar on home page
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
@@ -107,34 +101,4 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
         return super.onCreateOptionsMenu(menu);
     }
 
-/**
-    @Override
-    public void onClick(View v){
-        //Open sharedPreferences, which saves information between app loads
-        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        //get date of the last time the player took a quiz
-        String dateOfLastQuizTaken = prefs.getString("dateKey", "0");
-
-        //get todays date
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("d/M/yy");
-        String todaysDate = sdf.format(c.getTime());
-
-        //Update the sharedPreferences to store todays date
-        editor.putString("dateKey", todaysDate);
-        editor.commit();
-
-        //Check to see if the user has already taken the quiz today
-        if(false){      //dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
-            button.setText("You've already taken the quiz today. Come back tommorow!");
-            button.setTextSize(20);
-        }
-        else{   //else, take the quiz
-            Intent intent = new Intent(HomePage.this,QuizPage.class);
-            startActivity(intent);
-        }
-
-    }
-*/
 }
