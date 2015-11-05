@@ -45,6 +45,11 @@
 
         </activity>
 
+        <activity
+            android:name="com.example.fey.cityquiz.Register"
+            android:label = "Register" >
+
+        </activity>
 
 
     </application>

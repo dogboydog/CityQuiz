@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.Menu;
 import android.content.SharedPreferences;
 import com.parse.Parse;
+import com.parse.ParseUser;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -33,6 +34,7 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
             Parse.enableLocalDatastore(this);
             Parse.initialize(this, "2DRZJCltwfbJKH7cAcbkVNU2i2UFGq2uuDEIaxIK", "CEzdLzmlsCUSOhIM5r5spTz7ZTRjbVScAqS0dzU2");
             parseIsInitialized = true;
+            ParseUser.enableRevocableSessionInBackground();
         }
 
 
@@ -88,6 +90,17 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
                 startActivity(myIntent);
             }
         });
+
+        Button registerButton = (Button)findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //Go to register page
+                Intent myIntent = new Intent(HomePage.this, Register.class);
+                startActivity(myIntent);
+            }
+        });
+
+
 
     }
 
