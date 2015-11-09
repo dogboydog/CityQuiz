@@ -72,6 +72,8 @@ public class Register extends Activity {
                         // Sign up didn't succeed. Look at the ParseException
                         // to figure out what went wrong
                         Log.d("Error", e.toString());
+                        //ParseUser.logOut();
+
                     }
                 }
             });
