@@ -13,6 +13,10 @@ import com.parse.*;
 
 /**
  * Created by Jordon Rapoport on 11/4/15.
+ *
+ * This class allows a user, not currently logged in, to register an account. All accounts are
+ * stored via Parse with a Username, an encrypted password, and an email address.
+ *
  */
 public class Register extends Activity {
 
@@ -41,9 +45,8 @@ public class Register extends Activity {
         String email = email_field.getText().toString().trim();
         String password = pass1.getText().toString().trim();
         String passwordRetry = pass2.getText().toString().trim();
-
         if(TextUtils.isEmpty(name)){
-            name_field.setError("You must enter a name");
+            name_field.setError("You must enter a username");
         }
 
         if(TextUtils.isEmpty(email)){

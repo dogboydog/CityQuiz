@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="Enter Name"
+        android:hint="Enter Username"
         android:ems="10"
         android:id="@+id/nameField"
         android:selectAllOnFocus="false" />
