@@ -22,19 +22,15 @@ import java.util.List;
  */
 public class QuizPage extends Activity implements OnClickListener {
 
-
-
-    Quiz CurrentQuiz = new Quiz();
+    public Quiz CurrentQuiz = new Quiz();
     TextView timerTextView;
     CounterClass timer;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizpage);
-
 
         //newQuestion stores the question information form parse
         ParseObject newQuestion = null;
@@ -105,7 +101,6 @@ public class QuizPage extends Activity implements OnClickListener {
             Question TempQuestion = CurrentQuiz.ReturnQuestion();
             generate_question(TempQuestion);
         }
-
 
     }
 

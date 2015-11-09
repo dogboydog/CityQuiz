@@ -1,8 +1,10 @@
 package test;
 
+import android.content.Intent;
 import android.test.InstrumentationTestCase;
 import com.example.fey.cityquiz.Quiz;
 import com.example.fey.cityquiz.Question;
+import com.example.fey.cityquiz.QuizPage;
 
 /**
  * Created by Ryan on 10/12/15.
@@ -21,11 +23,14 @@ public class QuizTest extends InstrumentationTestCase {
     @Override
     protected void setUp() throws Exception{
         super.setUp();
+
+
+
         //create new question
         question1 = new Question(question, answer1, answer2, answer3, answer4, correctAnswer);
     }
 
-    
+
     //Test the return question function in the question class
     public void testReturnQuestion(){
         assertEquals("This is the question", question1.return_question());
@@ -83,6 +88,7 @@ public class QuizTest extends InstrumentationTestCase {
         quiz1 = new Quiz();
         quiz1.AddQuestion(question1);
         assertEquals(0, quiz1.CorrectAnswered);
+        //CheckAnswer() should iterate correctAnswer variable by one
         quiz1.CheckAnswer(question1.correctAnswer);
         assertEquals(1, quiz1.CorrectAnswered);
     }
@@ -92,10 +98,10 @@ public class QuizTest extends InstrumentationTestCase {
         quiz1 = new Quiz();
         quiz1.AddQuestion(question1);
         assertEquals(0, quiz1.WrongAnswered);
+        //CheckAnswer() should iterate wrongAnswered variable by one
         quiz1.CheckAnswer("wrong answer");
         assertEquals(1, quiz1.WrongAnswered);
     }
-
 
     @Override
     protected void tearDown() throws Exception{
