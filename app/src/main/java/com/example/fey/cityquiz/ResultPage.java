@@ -7,9 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-/**
- * Created by Fey on 2015/9/23.
- */
+
+
 public class ResultPage extends Activity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +20,7 @@ public class ResultPage extends Activity implements View.OnClickListener{
         String numCorrect = (String) intent.getSerializableExtra("correct");
         String numWrong = (String) intent.getSerializableExtra("wrong");
 
-        System.out.println("Correct answered = " + numCorrect);
-        System.out.println("Wrong answered = " + numWrong);
-
+        //Update text view to display the number of correct/wrong answers
         TextView resultsView = (TextView) findViewById(R.id.textView3);
         resultsView.setText("You got "+ numCorrect + " correct, and " + numWrong + " wrong.");
 
@@ -33,7 +30,9 @@ public class ResultPage extends Activity implements View.OnClickListener{
 
     }
 
-
+    /**
+     *Button sends user back to home screen
+     */
     @Override
     public void onClick(View v){
         Intent intent = new Intent(ResultPage.this,HomePage.class);

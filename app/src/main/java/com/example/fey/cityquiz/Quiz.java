@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public class Quiz{
 
-    ArrayList<Question> QuestionList = new ArrayList<Question>();   //Question List
+    ArrayList<Question> QuestionList = new ArrayList<Question>();   //List of questions
     public int CorrectAnswered;        //How many questions are answered correctly for now.
-    public int WrongAnswered;
+    public int WrongAnswered;           //How many questions are answered incorrectly
     public int CurrentQuestionIndex;
 
-    //constructor
+    /*
+     * Constructor with correct answer integer, question index integer, and wrong answered integer
+     */
     public Quiz()
     {
         CorrectAnswered = 0;

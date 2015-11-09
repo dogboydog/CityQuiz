@@ -29,17 +29,20 @@ public class HomePage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-        // Enable Local Datastore.
+        //Take Quiz button
+        button = (Button) findViewById(R.id.button);
+
+        // Initializes Parse so that we can store and retrieve objects to Parse.
         if(!parseIsInitialized) {
             Parse.enableLocalDatastore(this);
             Parse.initialize(this, "2DRZJCltwfbJKH7cAcbkVNU2i2UFGq2uuDEIaxIK", "CEzdLzmlsCUSOhIM5r5spTz7ZTRjbVScAqS0dzU2");
             parseIsInitialized = true;
         }
 
-
-        button = (Button) findViewById(R.id.button);
-
-       //This is all the onclick information for the 'Take Quiz' button
+        /**
+         * This function is called when the take quiz button is clicked.
+         * It checks to make sure the user has not taken the quiz today, then goes to the quiz page.
+         */
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 //Open sharedPreferences, which saves information between app loads
@@ -70,18 +73,25 @@ public class HomePage extends Activity {
             }
         });
 
-        //when clicked, will take the user to the submit page
+        //Submit question button
         Button button1 = (Button)findViewById(R.id.button8);
+        /**
+         * This function runs when the submit button is clicked.
+         * Goes to separate page to submit a question.
+         */
         button1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //go to submit page
                 Intent myIntent = new Intent(HomePage.this, SubmitPage.class);
                 startActivity(myIntent);
             }
         });
 
-        //when clicked, will take the user to the about page
+        //About page button
         Button button2 = (Button)findViewById(R.id.button7);
+        /**
+         * This function runs when the about page button is clicked.
+         * Goes to separate about page.
+         */
         button2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 //go to about page
@@ -93,8 +103,10 @@ public class HomePage extends Activity {
     }
 
 
+    /**
+     * Creates menu bar on home page for user registration
+     */
     @Override
-    //creates menu bar on home page
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();

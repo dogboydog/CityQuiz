@@ -35,7 +35,6 @@ public class QuizPage extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizpage);
 
-
         //newQuestion stores the question information form parse
         ParseObject newQuestion = null;
         //questionList holds the five ParseObject questions
@@ -43,6 +42,7 @@ public class QuizPage extends Activity implements OnClickListener {
 
         //query gets the first 5 objects from parse and store them in the questionlist
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Question");
+        //Limit the query to only get 5 objects from Parse
         query.setLimit(5);
 
         try {
@@ -52,7 +52,7 @@ public class QuizPage extends Activity implements OnClickListener {
             e.printStackTrace();
         }
 
-        //Get information from the parseobjects and make them into Question objects and add the questions to the CurrentQuiz
+        //Get information from the 5 parseobjects and make them into Question objects and add the questions to the CurrentQuiz
         for(int i=0; i<5; i++) {
                 newQuestion = questionList.get(i);
                 String quest = newQuestion.getString("question");
@@ -73,11 +73,15 @@ public class QuizPage extends Activity implements OnClickListener {
         timer = new CounterClass(60000, 1000);
         timer.start();
 
+        //Get question from the current quiz and present it to the user
         Question TempQuestion = CurrentQuiz.ReturnQuestion();
         generate_question(TempQuestion);
 
     }
 
+    /**
+     *onClick() is called whenever the user selects one of the four answers.
+     */
     @Override
     public void onClick(View v){
 
@@ -85,20 +89,23 @@ public class QuizPage extends Activity implements OnClickListener {
         Button the_clicked_button = (Button) findViewById(v.getId());
         String answered = the_clicked_button.getText().toString();
 
+        //Check if the users answer is correct
         CurrentQuiz.CheckAnswer(answered);
 
-        //no more questions, go to result page
+        // if there are no more questions, go to result page
         if(CurrentQuiz.isEmpty())
         {
             Intent intent = new Intent(QuizPage.this,ResultPage.class);
             String numCorrect = Integer.toString(CurrentQuiz.getCorrectAnswered());
             String numWrong = Integer.toString(CurrentQuiz.getWrongAnswered());
+            //putExtra() sends variables numCorrect and numWrong to the results page so that the quiz results can be displayed
             intent.putExtra("correct", numCorrect);
             intent.putExtra("wrong", numWrong);
+            //cancel timer so that it does not keep running on the results page
             timer.cancel();
             startActivity(intent);
         }
-        //still questions left
+        //If there are still questions left, iterate question index and present next question to the user.
         else
         {
             CurrentQuiz.CurrentQuestionIndex++;
@@ -114,7 +121,7 @@ public class QuizPage extends Activity implements OnClickListener {
     {
         Button button2 = (Button)findViewById(R.id.button2);
         button2.setText(question.button1().toString());
-        //adjust button text size based on length of question
+        //Resize the text on the button if the String is too long to fit on the button.
         if(button2.getLineCount() > 4 && button2.getLineCount() <= 6){
             button2.setTextSize(15);
         }
@@ -129,7 +136,7 @@ public class QuizPage extends Activity implements OnClickListener {
                 Animation.RELATIVE_TO_PARENT,0f,
                 Animation.RELATIVE_TO_PARENT,0f,
                 Animation.RELATIVE_TO_PARENT,0f);
-        translateAnimationAnswer1.setDuration(1000);
+        translateAnimationAnswer1.setDuration(500);
         translateAnimationAnswer1.setStartOffset(0);
         answer1_animation.addAnimation(translateAnimationAnswer1);
         button2.startAnimation(answer1_animation);
@@ -161,7 +168,6 @@ public class QuizPage extends Activity implements OnClickListener {
         /*Animation for Answer 2 finished*/
 
         button3.setOnClickListener(this);
-
 
 
         Button button4 = (Button) findViewById(R.id.button4);
@@ -218,7 +224,9 @@ public class QuizPage extends Activity implements OnClickListener {
         current_question.setText(question.return_question().toString());
     }
 
-    //This class is for the 60 second timer in the QuizPage.
+    /**
+     * This class creates a timer for the quiz
+     */
     public class CounterClass extends CountDownTimer {
 
         public CounterClass(long millisInFuture, long countDownInterval) {
@@ -234,14 +242,20 @@ public class QuizPage extends Activity implements OnClickListener {
         }
 
         @Override
-        //This runs when the timer hits 0- goes to the results page while marking any unanswered questions false
+        //This runs when the timer hits 0. Goes to the results page while marking any unanswered questions false
         public void onFinish() {
             timerTextView.setText("Out of Time");
             Intent intent = new Intent(QuizPage.this,ResultPage.class);
+
+            //Number of correct answers to be sent to results page
             String numCorrect = Integer.toString(CurrentQuiz.getCorrectAnswered());
+
+            //Number of wrong answers + number of unanswered questions
             int numWrong = CurrentQuiz.getWrongAnswered();
             numWrong += CurrentQuiz.getNumberRemainingQuestions();
             String numWrongString = Integer.toString(numWrong);
+
+            //Send numWrong and numCorrect to the results page
             intent.putExtra("correct", numCorrect);
             intent.putExtra("wrong", numWrongString);
             startActivity(intent);

@@ -2,6 +2,8 @@ package com.example.fey.cityquiz;
 import java.lang.*;
 
 
+
+
 public class Question{
 
     public String question;
@@ -11,7 +13,9 @@ public class Question{
     public String answer4;
     public String correctAnswer;
 
-    //constructor
+    /*
+     * Constructor with question string, four answer strings, and correct answer string
+     */
     public Question(String q, String a1, String a2, String a3, String a4, String c) {
         this.question = q;
         this.answer1 = a1;
@@ -22,7 +26,12 @@ public class Question{
 
     }
 
-    public String button1() { return this.answer1; }
+    /*
+     * Returns string of the button clicked
+     */
+    public String button1() {
+        return this.answer1;
+    }
 
     public String button2() {
         return this.answer2;
@@ -42,6 +51,9 @@ public class Question{
     }
 
 
+    /*
+     * Returns true if the answer that the user selected is the correct answer.
+     */
     public boolean isAnswer(String answer)
     {
         if (answer.compareTo(this.correctAnswer) == 0 )

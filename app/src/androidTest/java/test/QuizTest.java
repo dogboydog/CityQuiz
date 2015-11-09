@@ -20,6 +20,10 @@ public class QuizTest extends InstrumentationTestCase {
         testQuiz();
     }
 
+    /**
+     * This method tests the isEmpty(), AddQuestion(), ReturnQuestion(),
+     * and CheckAnswer() functions in the Quiz class are working correctly.
+     */
     public void testQuiz() {
         quiz1 = new Quiz();
 
@@ -44,6 +48,9 @@ public class QuizTest extends InstrumentationTestCase {
 
     }
 
+    /**
+     * This test verifies that the Question constructor, button() function, and isAnswer() functions are working correctly.
+     */
     public void testQuestion() {
         //create new question
         String question = "This is the question";
