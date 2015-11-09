@@ -16,10 +16,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class HomePage extends Activity /*implements OnClickListener*/ {
+public class HomePage extends Activity {
 
     //take quiz button
     Button button;
+    //boolean to determine if parse has already been initialized
     public static boolean parseIsInitialized = false;
 
 
@@ -57,7 +58,7 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
                 editor.commit();
 
                 //Check to see if the user has already taken the quiz today
-                if(false){//dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
+                if(dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
                     button.setText("You've already taken the quiz today. Come back tommorow!");
                     button.setTextSize(20);
                 }
