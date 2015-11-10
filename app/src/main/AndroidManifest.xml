@@ -57,6 +57,11 @@
 
         </activity>
 
+        <activity
+            android:name="com.example.fey.cityquiz.LeaderPage"
+            android:label = "LeaderPage" >
+
+        </activity>
 
     </application>
 
