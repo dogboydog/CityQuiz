@@ -10,8 +10,10 @@ import android.content.Intent;
 import android.app.Activity;
 import android.view.MenuInflater;
 import android.view.Menu;
+import android.util.Log;
 import android.content.SharedPreferences;
 import com.parse.Parse;
+import com.parse.ParseUser;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -21,6 +23,7 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
     //take quiz button
     Button button;
     public static boolean parseIsInitialized = false;
+    boolean isRegistered;
 
 
     @Override
@@ -33,7 +36,10 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
             Parse.enableLocalDatastore(this);
             Parse.initialize(this, "2DRZJCltwfbJKH7cAcbkVNU2i2UFGq2uuDEIaxIK", "CEzdLzmlsCUSOhIM5r5spTz7ZTRjbVScAqS0dzU2");
             parseIsInitialized = true;
+            ParseUser.enableRevocableSessionInBackground();
         }
+
+
 
 
         button = (Button) findViewById(R.id.button);
@@ -88,6 +94,35 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
                 startActivity(myIntent);
             }
         });
+
+        ParseUser currentUser = ParseUser.getCurrentUser(); // Gets current user if they're logged in
+        if(currentUser != null){
+            //They're logged in
+            isRegistered = true;
+        } else {
+            //Not logged in
+            isRegistered = false;
+        }
+
+        View b = findViewById(R.id.registerButton); //Gets register button view
+        if(isRegistered){
+           b.setVisibility(View.GONE);  //If you are already registered, this removes the register button
+        }
+
+
+        Button registerButton = (Button)findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //Go to register page
+                Intent myIntent = new Intent(HomePage.this, Register.class);
+                startActivity(myIntent);
+
+            }
+        });
+
+
+
+
 
     }
 

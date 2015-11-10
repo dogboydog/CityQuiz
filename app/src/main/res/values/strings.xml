@@ -7,8 +7,14 @@
     <string name="take_quiz">Take Quiz</string>
     <string name="submitButton">Submit</string>
     <string name="aboutButton">About</string>
+    <string name="registerButtonText">Register</string>
     <string name="aboutPageInfo">PageInfo</string>
     <string name="toMainFromAbout"> MainFromAbout</string>
     <string name="submit">Submit</string>
     <string name="submitText">SubmitText</string>
+    <string name="unequalPasswords">Passwords are not equal. Please try again</string>
+    <string name="passwordDialogTitle">Try Again</string>
+    <string name="registrationMessage">Your account has been successfully created.</string>
+
+
 </resources>

@@ -45,4 +45,14 @@
         android:layout_weight="0.16"
         android:background="#c9c9c9"
         android:textSize="40sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/registerButtonText"
+        android:id="@+id/registerButton"
+        android:layout_weight="0.16"
+        android:background="#c9c9c9"
+        android:textSize="40sp" />
+
 </LinearLayout>
