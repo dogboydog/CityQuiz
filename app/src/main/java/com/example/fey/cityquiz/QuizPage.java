@@ -124,7 +124,7 @@ public class QuizPage extends Activity implements OnClickListener {
                 Animation.RELATIVE_TO_PARENT,0f,
                 Animation.RELATIVE_TO_PARENT,0f,
                 Animation.RELATIVE_TO_PARENT,0f);
-        translateAnimationAnswer1.setDuration(1000);
+        translateAnimationAnswer1.setDuration(500);
         translateAnimationAnswer1.setStartOffset(0);
         answer1_animation.addAnimation(translateAnimationAnswer1);
         button2.startAnimation(answer1_animation);
