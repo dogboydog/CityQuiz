@@ -15,6 +15,7 @@
     <string name="unequalPasswords">Passwords are not equal. Please try again</string>
     <string name="passwordDialogTitle">Try Again</string>
     <string name="registrationMessage">Your account has been successfully created.</string>
+    <string name="leaderButton">LeaderBoard</string>
 
 
 </resources>

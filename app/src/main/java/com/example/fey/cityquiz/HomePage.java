@@ -94,6 +94,16 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
                 startActivity(myIntent);
             }
         });
+        
+        //when clicked, will take user to leaderboard page
+        Button button3 = (Button)findViewById(R.id.buttonLeader);
+        button3.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //go to leader board page
+                Intent myIntent = new Intent(HomePage.this, LeaderPage.class);
+                startActivity(myIntent);
+            }
+        });
 
         ParseUser currentUser = ParseUser.getCurrentUser(); // Gets current user if they're logged in
         if(currentUser != null){
