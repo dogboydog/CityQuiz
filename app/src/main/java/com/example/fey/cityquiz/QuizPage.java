@@ -86,11 +86,16 @@ public class QuizPage extends Activity implements OnClickListener {
         //no more questions, go to result page
         if(CurrentQuiz.isEmpty())
         {
+            //get time remaining for leaderboard tie-breakers
+            String millisecondsUntilFinish = Integer.toString((int)timer.millisUntilFinish);
             Intent intent = new Intent(QuizPage.this,ResultPage.class);
+            //get number of correct and incorrect answers
             String numCorrect = Integer.toString(CurrentQuiz.getCorrectAnswered());
             String numWrong = Integer.toString(CurrentQuiz.getWrongAnswered());
+            //send this information to results page
             intent.putExtra("correct", numCorrect);
             intent.putExtra("wrong", numWrong);
+            intent.putExtra("time", millisecondsUntilFinish);
             timer.cancel();
             startActivity(intent);
         }
@@ -220,10 +225,13 @@ public class QuizPage extends Activity implements OnClickListener {
             super(millisInFuture, countDownInterval);
         }
 
+        public long millisUntilFinish;
+
         @Override
         // Updates timer every second
         public void onTick(long millisUntilFinished) {
             long millis = millisUntilFinished;
+            millisUntilFinish = millisUntilFinished;
             String hms = String.format("Time Remaining:\n%02d", TimeUnit.MILLISECONDS.toSeconds(millis));
             timerTextView.setText(hms);
         }

@@ -59,7 +59,8 @@
 
         <activity
             android:name="com.example.fey.cityquiz.LeaderPage"
-            android:label = "LeaderPage" >
+            android:label = "LeaderPage"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
 
         </activity>
 

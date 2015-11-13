@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.util.Log;
 import android.content.SharedPreferences;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseUser;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +32,7 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
+
         // Enable Local Datastore.
         if(!parseIsInitialized) {
             Parse.enableLocalDatastore(this);
@@ -38,7 +40,6 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
             parseIsInitialized = true;
             ParseUser.enableRevocableSessionInBackground();
         }
-
 
 
 
@@ -121,8 +122,8 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
 
 
         Button registerButton = (Button)findViewById(R.id.registerButton);
-        registerButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 //Go to register page
                 Intent myIntent = new Intent(HomePage.this, Register.class);
                 startActivity(myIntent);
