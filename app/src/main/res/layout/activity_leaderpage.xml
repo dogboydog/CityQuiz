@@ -39,7 +39,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HomePage"
+            android:text="Home"
             android:id="@+id/buttonLeaderonleaderboard"
             android:layout_x="0dp"
             android:layout_y="471dp"
