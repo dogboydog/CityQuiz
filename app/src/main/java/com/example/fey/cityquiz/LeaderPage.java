@@ -46,7 +46,8 @@ public class LeaderPage extends Activity {
         leaderboards = (TextView) findViewById(R.id.LeaderboardTextView);
         leaderboards.setTextSize(20);
         //default to daily leader boards
-        sortUsers("DailyScore");
+        SortOrder order = SortOrder.DailyScore;
+        sortUsers(order);
         //home button
         button12 = (Button) findViewById(R.id.buttonLeaderonleaderboard);
         //set leaderboard to daily leaders
@@ -68,28 +69,32 @@ public class LeaderPage extends Activity {
         dailyButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 header.setText("Daily \nLeaderboards");
-                sortUsers("DailyScore");
+                SortOrder order = SortOrder.DailyScore;
+                sortUsers(order);
             }
         });
         //weekly button sorts users by their weekly score
         weeklyButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 header.setText("Weekly \nLeaderboards");
-                sortUsers("WeeklyScore");
+                SortOrder order = SortOrder.WeeklyScore;
+                sortUsers(order);
             }
         });
         //monthly button sorts users by their monthly score
         monthlyButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 header.setText("Monthly \nLeaderboards");
-                sortUsers("MonthlyScore");
+                SortOrder order = SortOrder.MonthlyScore;
+                sortUsers(order);
             }
         });
         //all time button sorts users by their all time score
         allTimeButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+            public void onClick(View v) {
                 header.setText("All Time \nLeaderboards");
-                sortUsers("AllTimeScore");
+                SortOrder order = SortOrder.AllTimeScore;
+                sortUsers(order);
             }
         });
 
@@ -97,11 +102,11 @@ public class LeaderPage extends Activity {
 
     /**
      * This method sorts the user query by daily, weekly, monthly, or all time score and updates the leaderboards with the player names. It also gets the user's position on the leaderboards.
-     * @param sortCategory this parameter can be set to DailyScore, MonthlyScore, WeeklyScore, or allTimeScore, and sorts the usernames accordingly.
+     * @param order this parameter can be set to DailyScore, MonthlyScore, WeeklyScore, or allTimeScore, and sorts the usernames accordingly.
      */
-    public void sortUsers(String sortCategory){
+    public void sortUsers(SortOrder order){
         //Order usernames from highest score to lowest
-        query.orderByDescending(sortCategory);
+        query.orderByDescending(String.valueOf(order));
         //If there is a tie in the score, sort the usernames by time.
         query.addDescendingOrder("Time");
         try {
@@ -132,4 +137,11 @@ public class LeaderPage extends Activity {
                 "\n8th: "+playerNames[7]+"\n9th: "+playerNames[8]+"\n10th: "+playerNames[9]+ "\nYour position: "+playerPosition);
     }
 
+    /**
+     * SortOrder stores a string value of DailyScore, WeeklyScore, Monthlyscore, and allTimeScore depending on what the user wants the leaderboards to be sorted by. 
+     */
+    private enum SortOrder
+    {
+        DailyScore, WeeklyScore, MonthlyScore, AllTimeScore
+    }
 }
