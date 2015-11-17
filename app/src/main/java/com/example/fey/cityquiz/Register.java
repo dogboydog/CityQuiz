@@ -91,11 +91,15 @@ public class Register extends Activity {
                         // Sign up didn't succeed. Look at the ParseException
                         // to figure out what went wrong
                         Log.d("Error", e.toString());
-                        ParseUser.logOut();
-
                     }
                 }
             });
+
+            //These two lines automatically take the user back to the home page after a successful registration
+            Intent goHome = new Intent(Register.this,HomePage.class);
+            startActivity(goHome);
+
+
 
         } else {
             //Displays dialog to inform the user the passwords were unequal and they must try again
