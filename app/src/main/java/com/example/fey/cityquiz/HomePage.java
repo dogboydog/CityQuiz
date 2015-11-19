@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class HomePage extends Activity /*implements OnClickListener*/ {
+public class HomePage extends Activity  {
 
     //take quiz button
     Button button;
@@ -120,7 +120,6 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
            b.setVisibility(View.GONE);  //If you are already registered, this removes the register button
         }
 
-
         Button registerButton = (Button)findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -130,10 +129,6 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
 
             }
         });
-
-
-
-
 
     }
 
