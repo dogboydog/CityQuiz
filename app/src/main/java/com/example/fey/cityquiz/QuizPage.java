@@ -218,6 +218,15 @@ public class QuizPage extends Activity implements OnClickListener {
         current_question.setText(question.return_question().toString());
     }
 
+    /**
+     * This method runs when the user presses the back button
+     */
+    public void onBackPressed(){
+        super.onBackPressed();
+        //Cancel the timer to prevent timer bug if the user goes back to home screen
+        timer.cancel();
+    }
+
     //This class is for the 60 second timer in the QuizPage.
     public class CounterClass extends CountDownTimer {
 
@@ -249,6 +258,7 @@ public class QuizPage extends Activity implements OnClickListener {
             intent.putExtra("wrong", numWrongString);
             startActivity(intent);
         }
+
     }
 
 }

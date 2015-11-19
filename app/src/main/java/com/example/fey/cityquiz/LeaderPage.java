@@ -138,7 +138,7 @@ public class LeaderPage extends Activity {
     }
 
     /**
-     * SortOrder stores a string value of DailyScore, WeeklyScore, Monthlyscore, and allTimeScore depending on what the user wants the leaderboards to be sorted by. 
+     * SortOrder stores a string value of DailyScore, WeeklyScore, Monthlyscore, and allTimeScore depending on what the user wants the leaderboards to be sorted by.
      */
     private enum SortOrder
     {
