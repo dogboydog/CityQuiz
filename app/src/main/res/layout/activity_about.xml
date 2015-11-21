@@ -10,7 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
-        android:textSize="35sp" />
+        android:textSize="35sp"
+        android:layout_weight="0.85"
+        android:text="This App was created by Chris Boehm, Jordan Rapoport, Ryan Ching, Fei Yu, and Hugh Pedley. All questions are fact checked by the development team. "
+        android:textColor="#b8860b" />
 
     <Button
         android:layout_width="match_parent"
