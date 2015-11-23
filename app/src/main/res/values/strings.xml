@@ -17,5 +17,7 @@
     <string name="registrationMessage">Your account has been successfully created.</string>
     <string name="leaderButton">LeaderBoard</string>
     <string name="headerString"><u>Developers</u></string>
+    <string name="androidIdAlertMessage">There is already a registered account associated with this device. </string>
+    <string name="androidIdAlertTitle">Registration Error</string>
 
 </resources>

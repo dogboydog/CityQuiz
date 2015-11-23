@@ -16,6 +16,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseException;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
+import android.os.CountDownTimer;
 
 /**
  * Created by Fey on 2015/9/23.
@@ -247,6 +248,7 @@ public class QuizPage extends Activity implements OnClickListener {
             String numWrongString = Integer.toString(numWrong);
             intent.putExtra("correct", numCorrect);
             intent.putExtra("wrong", numWrongString);
+            intent.putExtra("time", millisUntilFinish);
             startActivity(intent);
         }
     }

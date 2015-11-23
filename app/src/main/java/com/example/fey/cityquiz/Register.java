@@ -1,6 +1,7 @@
 package com.example.fey.cityquiz;
 
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import com.parse.*;
+import android.provider.Settings.Secure;
+import java.util.List;
 
 /**
  * Created by Jordon Rapoport on 11/4/15.
@@ -24,6 +27,44 @@ public class Register extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+
+        /*
+        This line gets the unique id associated with each android device. Can only be reset by wiping the phone
+         */
+        final String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        Log.d("ANDROID ID", android_id);
+
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("androidID", android_id);    //If these id's match, an account has already been registered on that account
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> scoreList, ParseException e) {
+                if (e == null) {
+                    if(scoreList.size() > 0){
+                        Log.d("id", "android_id matches one already in the table");
+                        //Displays dialog to inform the user the passwords were unequal and they must try again
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
+                        builder.setMessage(R.string.androidIdAlertMessage).setTitle(R.string.androidIdAlertTitle);
+                        builder.setCancelable(false);   //Makes it so a user can't click outside of the alert to close the dialog. They must click the button
+                        builder.setPositiveButton("Back to Home",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //These two lines automatically take the user back to the home page after a successful registration
+                                        Intent goHome = new Intent(Register.this,HomePage.class);
+                                        startActivity(goHome);
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    }else{
+                        Log.d("No Match", "Android ID does not match any in table");
+                    }
+
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
+                }
+            }
+        });
     }
 
     public void onClick(View v){
@@ -67,7 +108,7 @@ public class Register extends Activity {
             email_field.setError("You must enter an email");
         }
 
-        if(TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)){
             pass1.setError("You must enter a password");
         }
 
@@ -76,12 +117,17 @@ public class Register extends Activity {
         }
 
         if(password.equals(passwordRetry)){
+
+            String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+            Log.d("ANDROID ID", android_id);
+
             ParseUser user = new ParseUser();
             user.setUsername(name);
             user.setPassword(password);
             user.setEmail(email);
             user.put("address", address);
             user.put("dateOfBirth", dob);
+            user.put("androidID", android_id);
 
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {
@@ -94,6 +140,7 @@ public class Register extends Activity {
                     }
                 }
             });
+
 
             //These two lines automatically take the user back to the home page after a successful registration
             Intent goHome = new Intent(Register.this,HomePage.class);
