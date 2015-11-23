@@ -92,4 +92,9 @@ public class ResultPage extends Activity implements View.OnClickListener{
         Intent intent = new Intent(ResultPage.this,HomePage.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

@@ -216,6 +216,12 @@ public class QuizPage extends Activity implements OnClickListener {
 
         TextView current_question = (TextView) findViewById(R.id.textView2);
         current_question.setText(question.return_question().toString());
+        if(current_question.getLineCount() > 4 && current_question.getLineCount() <= 6){
+            current_question.setTextSize(15);
+        }
+        else if(current_question.getLineCount() > 6){
+            current_question.setTextSize(10);
+        }
     }
 
     /**
@@ -254,6 +260,8 @@ public class QuizPage extends Activity implements OnClickListener {
             int numWrong = CurrentQuiz.getWrongAnswered();
             numWrong += CurrentQuiz.getNumberRemainingQuestions();
             String numWrongString = Integer.toString(numWrong);
+            String millisecondsUntilFinish = Integer.toString((int)timer.millisUntilFinish);
+            intent.putExtra("time", millisecondsUntilFinish);
             intent.putExtra("correct", numCorrect);
             intent.putExtra("wrong", numWrongString);
             startActivity(intent);
