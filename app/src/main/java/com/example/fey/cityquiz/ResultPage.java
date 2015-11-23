@@ -73,6 +73,15 @@ public class ResultPage extends Activity implements View.OnClickListener{
         Button button6 = (Button) findViewById(R.id.button6);
         button6.setOnClickListener(this);
 
+        Button button12 = (Button) findViewById(R.id.button12);
+        button12.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //go to leader board page
+                Intent myIntent = new Intent(ResultPage.this, LeaderPage.class);
+                startActivity(myIntent);
+            }
+        });
+
     }
 
     /**
