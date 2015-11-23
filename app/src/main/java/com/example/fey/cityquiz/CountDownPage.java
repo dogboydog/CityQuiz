@@ -1,0 +1,86 @@
+package com.example.fey.cityquiz;
+
+
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Animation;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.content.Intent;
+import android.app.Activity;
+import android.widget.TextView;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * Created by Fey on 2015/11/22.
+ */
+public class CountDownPage extends Activity {
+
+    CounterClass adTimer;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_countdown);
+
+        TextView countdownView = (TextView) findViewById(R.id.textCountdown);
+        //countdownView.getBackground().setAlpha(0);
+
+        adTimer = new CounterClass(6010, 1000);    //after 5 sec, ad can be skiped
+        adTimer.start();
+
+
+
+    }
+
+
+
+    public class CounterClass extends CountDownTimer {
+
+        public CounterClass(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        public long millisUntilFinish;
+
+        @Override
+        // Updates timer every second
+        public void onTick(long millisUntilFinished) {
+            TextView countdownView = (TextView) findViewById(R.id.textCountdown);
+
+            long millis = millisUntilFinished;
+            millisUntilFinish = millisUntilFinished;
+            String hms = String.format("%d", TimeUnit.MILLISECONDS.toSeconds(millis)-1);
+
+            countdownView.setText(hms);
+
+            if (TimeUnit.MILLISECONDS.toSeconds(millis)-1!=0)
+            {
+                //initiation
+                Animation scaleAnimation = new ScaleAnimation(1.0f, 0.1f,1.0f,0.1f,
+                        Animation.RELATIVE_TO_SELF,0.5f,
+                        Animation.RELATIVE_TO_SELF,0.5f);
+                //duration
+                scaleAnimation.setDuration(1000);
+                countdownView.startAnimation(scaleAnimation);
+            }
+
+
+
+        }
+
+        @Override
+
+        public void onFinish() {
+            TextView countdownView = (TextView) findViewById(R.id.textCountdown);
+            countdownView.setText("GO");
+            countdownView.setTextSize(150);
+            Intent intent = new Intent(CountDownPage.this,QuizPage.class);
+            startActivity(intent);
+
+        }
+
+
+
+    }
+
+}
