@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class HomePage extends Activity /*implements OnClickListener*/ {
+public class HomePage extends Activity  {
 
     //take quiz button
     Button button;
@@ -39,14 +39,13 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
             Parse.initialize(this, "2DRZJCltwfbJKH7cAcbkVNU2i2UFGq2uuDEIaxIK", "CEzdLzmlsCUSOhIM5r5spTz7ZTRjbVScAqS0dzU2");
             parseIsInitialized = true;
             ParseUser.enableRevocableSessionInBackground();
-            ParseUser.logOut(); //Uncomment if you want to logout
         }
 
 
 
         button = (Button) findViewById(R.id.button);
 
-       //This is all the onclick information for the 'Take Quiz' button
+        //This is all the onclick information for the 'Take Quiz' button
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 //Open sharedPreferences, which saves information between app loads
@@ -96,7 +95,7 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
                 startActivity(myIntent);
             }
         });
-        
+
         //when clicked, will take user to leaderboard page
         Button button3 = (Button)findViewById(R.id.buttonLeader);
         button3.setOnClickListener(new View.OnClickListener(){
@@ -118,9 +117,8 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
 
         View b = findViewById(R.id.registerButton); //Gets register button view
         if(isRegistered){
-           b.setVisibility(View.GONE);  //If you are already registered, this removes the register button
+            b.setVisibility(View.GONE);  //If you are already registered, this removes the register button
         }
-
 
         Button registerButton = (Button)findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -131,10 +129,6 @@ public class HomePage extends Activity /*implements OnClickListener*/ {
 
             }
         });
-
-
-
-
 
     }
 

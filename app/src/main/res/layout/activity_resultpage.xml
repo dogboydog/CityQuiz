@@ -23,4 +23,14 @@
         android:layout_y="320dp"
         android:background="#B8860B"
         android:textSize="50dp" />
+
+    <TextView
+        android:layout_width="211dp"
+        android:layout_height="76dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Time Goes Here"
+        android:id="@+id/timeRemaining"
+        android:layout_x="114dp"
+        android:layout_y="246dp"
+        android:textColor="#B8860B" />
 </AbsoluteLayout>
