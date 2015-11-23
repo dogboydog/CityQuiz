@@ -53,7 +53,7 @@ public class AdPage extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v){
-        Intent intent = new Intent(AdPage.this,QuizPage.class);
+        Intent intent = new Intent(AdPage.this,CountDownPage.class);
         startActivity(intent);
     }
 
