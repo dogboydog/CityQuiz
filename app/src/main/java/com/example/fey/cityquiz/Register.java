@@ -37,16 +37,30 @@ public class Register extends Activity {
     public void checkFields(View v){
 
         EditText name_field = (EditText)findViewById(R.id.nameField);
+        EditText addr_field = (EditText)findViewById(R.id.addressField);
+        EditText dob_field = (EditText)findViewById(R.id.dateOfBirthField);
         EditText email_field = (EditText)findViewById(R.id.emailField);
         EditText pass1 = (EditText)findViewById(R.id.passwordField);
         EditText pass2 = (EditText)findViewById(R.id.passwordConfirmField);
 
+
         String name = name_field.getText().toString().trim();
+        String address = addr_field.getText().toString().trim();
+        String dob = dob_field.getText().toString().trim();
         String email = email_field.getText().toString().trim();
         String password = pass1.getText().toString().trim();
         String passwordRetry = pass2.getText().toString().trim();
+
         if(TextUtils.isEmpty(name)){
             name_field.setError("You must enter a username");
+        }
+
+        if(TextUtils.isEmpty(address)){
+            name_field.setError("You must enter an address");
+        }
+
+        if(TextUtils.isEmpty(dob)){
+            name_field.setError("You must enter a date of birth");
         }
 
         if(TextUtils.isEmpty(email)){
@@ -66,6 +80,8 @@ public class Register extends Activity {
             user.setUsername(name);
             user.setPassword(password);
             user.setEmail(email);
+            user.put("address", address);
+            user.put("dateOfBirth", dob);
 
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {
@@ -75,11 +91,15 @@ public class Register extends Activity {
                         // Sign up didn't succeed. Look at the ParseException
                         // to figure out what went wrong
                         Log.d("Error", e.toString());
-                        //ParseUser.logOut();
-
                     }
                 }
             });
+
+            //These two lines automatically take the user back to the home page after a successful registration
+            Intent goHome = new Intent(Register.this,HomePage.class);
+            startActivity(goHome);
+
+
 
         } else {
             //Displays dialog to inform the user the passwords were unequal and they must try again

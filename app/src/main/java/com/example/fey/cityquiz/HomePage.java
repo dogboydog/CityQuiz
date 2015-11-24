@@ -39,6 +39,7 @@ public class HomePage extends Activity  {
             Parse.initialize(this, "2DRZJCltwfbJKH7cAcbkVNU2i2UFGq2uuDEIaxIK", "CEzdLzmlsCUSOhIM5r5spTz7ZTRjbVScAqS0dzU2");
             parseIsInitialized = true;
             ParseUser.enableRevocableSessionInBackground();
+            ParseUser.logOut(); //Uncomment if you want to logout
         }
 
 

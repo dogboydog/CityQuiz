@@ -16,6 +16,6 @@
     <string name="passwordDialogTitle">Try Again</string>
     <string name="registrationMessage">Your account has been successfully created.</string>
     <string name="leaderButton">LeaderBoard</string>
-
+    <string name="headerString"><u>Developers</u></string>
 
 </resources>
