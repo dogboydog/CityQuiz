@@ -117,10 +117,12 @@ public class LeaderPage extends Activity {
         }
         //Iterate through the list of users
         for(int i=0; i<userList.size(); i++){
+
             //get the top 10 player names to be displayed on the leader board
             if(i<10) {
                 playerNames[i] = userList.get(i).getUsername();
             }
+
             //get the current user's position in the leaderboards
             if(userList.get(i)==ParseUser.getCurrentUser()){
                 playerPosition = i+1;
@@ -138,7 +140,7 @@ public class LeaderPage extends Activity {
     }
 
     /**
-     * SortOrder stores a string value of DailyScore, WeeklyScore, Monthlyscore, and allTimeScore depending on what the user wants the leaderboards to be sorted by. 
+     * SortOrder stores a string value of DailyScore, WeeklyScore, Monthlyscore, and allTimeScore depending on what the user wants the leaderboards to be sorted by.
      */
     private enum SortOrder
     {

@@ -25,13 +25,14 @@
         android:text="@string/submit"
         android:id="@+id/button10"
         android:layout_gravity="center_horizontal"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:background="#b8860b" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Home"
         android:id="@+id/button11"
-        android:layout_gravity="center_horizontal"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:background="#b8860b" />
 </LinearLayout>

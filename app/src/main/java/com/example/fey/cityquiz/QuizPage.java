@@ -217,6 +217,21 @@ public class QuizPage extends Activity implements OnClickListener {
 
         TextView current_question = (TextView) findViewById(R.id.textView2);
         current_question.setText(question.return_question().toString());
+        if(current_question.getLineCount() > 4 && current_question.getLineCount() <= 6){
+            current_question.setTextSize(15);
+        }
+        else if(current_question.getLineCount() > 6){
+            current_question.setTextSize(10);
+        }
+    }
+
+    /**
+     * This method runs when the user presses the back button
+     */
+    public void onBackPressed(){
+        super.onBackPressed();
+        //Cancel the timer to prevent timer bug if the user goes back to home screen
+        timer.cancel();
     }
 
     //This class is for the 60 second timer in the QuizPage.
@@ -246,11 +261,14 @@ public class QuizPage extends Activity implements OnClickListener {
             int numWrong = CurrentQuiz.getWrongAnswered();
             numWrong += CurrentQuiz.getNumberRemainingQuestions();
             String numWrongString = Integer.toString(numWrong);
+            String millisecondsUntilFinish = Integer.toString((int)timer.millisUntilFinish);
+            intent.putExtra("time", millisecondsUntilFinish);
             intent.putExtra("correct", numCorrect);
             intent.putExtra("wrong", numWrongString);
             intent.putExtra("time", millisUntilFinish);
             startActivity(intent);
         }
+
     }
 
 }
