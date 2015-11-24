@@ -63,6 +63,20 @@
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
 
         </activity>
+        
+        <activity
+            android:name="com.example.fey.cityquiz.AdPage"
+            android:label = "AdPage"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+
+        </activity>
+        
+        <activity
+            android:name="com.example.fey.cityquiz.CountDownPage"
+            android:label = "CountDownPage"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+
+        </activity>
 
     </application>
 

@@ -69,7 +69,7 @@ public class HomePage extends Activity  {
                     button.setTextSize(20);
                 }
                 else{   //else, take the quiz
-                    Intent intent = new Intent(HomePage.this,QuizPage.class);
+                    Intent intent = new Intent(HomePage.this,AdPage.class);
                     startActivity(intent);
                 }
 
