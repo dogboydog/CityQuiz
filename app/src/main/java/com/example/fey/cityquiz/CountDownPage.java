@@ -25,7 +25,7 @@ public class CountDownPage extends Activity {
         TextView countdownView = (TextView) findViewById(R.id.textCountdown);
         //countdownView.getBackground().setAlpha(0);
 
-        adTimer = new CounterClass(6010, 1000);    //after 5 sec, ad can be skiped
+        adTimer = new CounterClass(5500, 1000);    //after 5 sec, ad can be skiped
         adTimer.start();
 
 
@@ -47,13 +47,13 @@ public class CountDownPage extends Activity {
         public void onTick(long millisUntilFinished) {
             TextView countdownView = (TextView) findViewById(R.id.textCountdown);
 
-            long millis = millisUntilFinished;
-            millisUntilFinish = millisUntilFinished;
-            String hms = String.format("%d", TimeUnit.MILLISECONDS.toSeconds(millis)-1);
+           
+            long time = millisUntilFinished/1000-1;
+            countdownView.setText(""+time);
 
-            countdownView.setText(hms);
 
-            if (TimeUnit.MILLISECONDS.toSeconds(millis)-1!=0)
+
+            if ( millisUntilFinished/1000-1!=0)
             {
                 //initiation
                 Animation scaleAnimation = new ScaleAnimation(1.0f, 0.1f,1.0f,0.1f,
@@ -81,6 +81,11 @@ public class CountDownPage extends Activity {
 
 
 
+    }
+
+    /*Disable the back button*/
+    @Override
+    public void onBackPressed() {
     }
 
 }
