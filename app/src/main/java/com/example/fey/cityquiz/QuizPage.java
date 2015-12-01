@@ -229,9 +229,9 @@ public class QuizPage extends Activity implements OnClickListener {
      * This method runs when the user presses the back button
      */
     public void onBackPressed(){
-        super.onBackPressed();
+        //super.onBackPressed();
         //Cancel the timer to prevent timer bug if the user goes back to home screen
-        timer.cancel();
+        //timer.cancel();
     }
 
     //This class is for the 60 second timer in the QuizPage.
