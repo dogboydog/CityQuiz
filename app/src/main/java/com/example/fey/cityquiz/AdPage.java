@@ -70,7 +70,7 @@ public class AdPage extends Activity implements OnClickListener {
         public void onTick(long millisUntilFinished) {
             long millis = millisUntilFinished;
             millisUntilFinish = millisUntilFinished;
-            String hms = String.format("Be ready, quiz can be started in:  %02d", TimeUnit.MILLISECONDS.toSeconds(millis));
+            String hms = String.format("Be ready, quiz can be started in:  %02d", TimeUnit.MILLISECONDS.toSeconds(millis)-1);
             Button button = (Button) findViewById(R.id.adButton);
             button.setText(hms);
         }
