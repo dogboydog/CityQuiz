@@ -24,7 +24,8 @@ public class ResultPage extends Activity implements View.OnClickListener{
         Intent intent = getIntent();
         String numCorrect = (String) intent.getSerializableExtra("correct");
         String numWrong = (String) intent.getSerializableExtra("wrong");
-        String millisUntilFinish = (String) intent.getSerializableExtra("time");
+        long millisUntilFinishLong = (long) intent.getSerializableExtra("time");
+        String millisUntilFinish = Long.toString(millisUntilFinishLong);
 
         int weeklyScore, monthlyScore, allTimeScore;
 

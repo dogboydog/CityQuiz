@@ -88,7 +88,6 @@ public class QuizPage extends Activity implements OnClickListener {
         if(CurrentQuiz.isEmpty())
         {
             //get time remaining for leaderboard tie-breakers
-            String millisecondsUntilFinish = Integer.toString((int)timer.millisUntilFinish);
             Intent intent = new Intent(QuizPage.this,ResultPage.class);
             //get number of correct and incorrect answers
             String numCorrect = Integer.toString(CurrentQuiz.getCorrectAnswered());
@@ -96,7 +95,7 @@ public class QuizPage extends Activity implements OnClickListener {
             //send this information to results page
             intent.putExtra("correct", numCorrect);
             intent.putExtra("wrong", numWrong);
-            intent.putExtra("time", millisecondsUntilFinish);
+            intent.putExtra("time", timer.millisUntilFinish);
             timer.cancel();
             startActivity(intent);
         }

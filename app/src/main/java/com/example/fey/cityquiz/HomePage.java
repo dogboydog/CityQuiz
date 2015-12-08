@@ -64,7 +64,7 @@ public class HomePage extends Activity  {
                 editor.commit();
 
                 //Check to see if the user has already taken the quiz today
-                if(false){//dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
+                if(dateOfLastQuizTaken.equals(todaysDate)){     //SET THIS TO ALWAYS EQUAL FALSE IF YOU WANT TO RUN THE QUIZ MORE THAN ONCE PER DAY
                     button.setText("You've already taken the quiz today. Come back tommorow!");
                     button.setTextSize(20);
                 }
